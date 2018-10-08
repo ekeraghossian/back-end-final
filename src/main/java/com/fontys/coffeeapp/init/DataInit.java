@@ -1,3 +1,4 @@
+package com.fontys.coffeeapp.init;
 
 import com.fontys.coffeeapp.dao.PersonDAO;
 import com.fontys.coffeeapp.entity.Person;
