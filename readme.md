@@ -61,7 +61,7 @@ Add additional notes about how to deploy this on a live system
 * [Spring Boot](http://spring.io/projects/spring-boot) - The web framework used
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [Hibernate](http://hibernate.org/) - Used for JPA
-* [H2 database] (http://www.h2database.com/html/main.html) - Used as database for developing
+* [H2 database](http://www.h2database.com/html/main.html) - Used as database for developing
 
 ## Versioning
 
