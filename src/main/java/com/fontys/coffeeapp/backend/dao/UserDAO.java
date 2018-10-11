@@ -12,6 +12,6 @@ public interface UserDAO extends CrudRepository<User, Long> {
 
     public List<User> findByFullNameLike(String name);
 
-    public List<User> findByDateOfBirthGreaterThan(Date date);
+
 
 }
