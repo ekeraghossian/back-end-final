@@ -47,9 +47,9 @@ public class DataInit implements ApplicationRunner {
             p3.setFullName("Jordy Bruno");
             p3.setDateOfBirth(d3);
 
-//            userDAO.save(p1);
-//            userDAO.save(p2);
-//            userDAO.save(p3);
+            userDAO.save(p1);
+            userDAO.save(p2);
+            userDAO.save(p3);
 
             Iterable<User> findBy = userDAO.findAll();
             findBy.forEach(user -> System.out.println(user));
