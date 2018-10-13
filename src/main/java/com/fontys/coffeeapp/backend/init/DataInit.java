@@ -40,7 +40,6 @@ public class DataInit implements ApplicationRunner {
             p1.setFullName("Jordy");
             p1.setCredits(10);
 
-
             Drink drink = new Drink();
             drink.setName("Koffie");
             drink.setSugar(0);

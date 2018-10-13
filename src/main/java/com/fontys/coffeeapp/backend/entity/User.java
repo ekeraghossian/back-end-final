@@ -22,8 +22,8 @@ public class User {
     private int credits;
 
     @ManyToMany
-    @JoinTable(name = "consumption",
-            joinColumns = { @JoinColumn(name = "fk_user")},
+    @JoinTable(name = "RoundUserDrink",
+            joinColumns = {@JoinColumn(name = "fk_user")},
             inverseJoinColumns = { @JoinColumn(name = "fk_drink")})
     private Set<Drink> drinks = new HashSet<>();
 
