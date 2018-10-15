@@ -1,17 +1,13 @@
 package com.fontys.coffeeapp.backend.entity;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "USER")
+@Table
 public class User {
 
     @Id
@@ -19,12 +15,17 @@ public class User {
     @Column(name = "Id", nullable = false)
     private Long id;
 
-    @Column(name = "Full_Name", length = 64, nullable = false)
+    @Column(name = "Full_name", length = 64, nullable = false)
     private String fullName;
 
-    @Temporal(TemporalType.DATE)
-    @Column(name = "Date_Of_Birth", nullable = false)
-    private Date dateOfBirth;
+    @Column(name = "Credits", nullable = false)
+    private int credits;
+
+    @ManyToMany
+    @JoinTable(name = "RoundUserDrink",
+            joinColumns = {@JoinColumn(name = "fk_user")},
+            inverseJoinColumns = { @JoinColumn(name = "fk_drink")})
+    private Set<Drink> drinks = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -38,16 +39,22 @@ public class User {
         return fullName;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setFullName(String fullName) { this.fullName = fullName; }
+
+    public int getCredits() {
+        return credits;
     }
 
-    public Date getDateOfBirth() {
-        return dateOfBirth;
+    public void setCredits(int credits) {
+        this.credits = credits;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public Set<Drink> getDrinks() {
+        return drinks;
+    }
+
+    public void setDrinks(Set<Drink> drinks) {
+        this.drinks = drinks;
     }
 
     @Override
@@ -55,7 +62,7 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", fullName='" + fullName + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
+                ", credits=" + credits +
                 '}';
     }
 }

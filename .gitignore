@@ -23,7 +23,4 @@
 /dist/
 /nbdist/
 /.nb-gradle/
-
-### Ignore database ###
-
 db/testdb\.mv\.db
