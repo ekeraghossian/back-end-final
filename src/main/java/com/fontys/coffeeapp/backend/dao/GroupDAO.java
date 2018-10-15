@@ -1,4 +1,4 @@
 package com.fontys.coffeeapp.backend.dao;
 
-public interface DrinkDAO {
+public interface GroupDAO {
 }

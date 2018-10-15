@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface UserDAO extends CrudRepository<User, Long> {
 
-    public List<User> findByFullNameLike(String name);
+    public List<User> findByNameLike(String name);
 
 
 

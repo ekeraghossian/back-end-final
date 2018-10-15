@@ -25,7 +25,7 @@ public class MainController {
 
         StringBuilder sb = new StringBuilder();
 
-        all.forEach(p -> sb.append(p.getFullName() + "<br>"));
+        all.forEach(p -> sb.append(p.getName() + "<br>"));
 
         return sb.toString();
     }

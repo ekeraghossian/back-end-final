@@ -1,6 +1,5 @@
 package com.fontys.coffeeapp.backend.entity;
 
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,16 +15,16 @@ public class User {
     private Long id;
 
     @Column(name = "Full_name", length = 64, nullable = false)
-    private String fullName;
+    private String name;
 
     @Column(name = "Credits", nullable = false)
     private int credits;
 
-    @ManyToMany
-    @JoinTable(name = "RoundUserDrink",
-            joinColumns = {@JoinColumn(name = "fk_user")},
-            inverseJoinColumns = { @JoinColumn(name = "fk_drink")})
-    private Set<Drink> drinks = new HashSet<>();
+//    @ManyToMany
+//    @JoinTable(name = "GroupUserDrink",
+//            joinColumns = {@JoinColumn(name = "fk_user")},
+//            inverseJoinColumns = { @JoinColumn(name = "fk_drink")})
+//    private Set<Drink> drinks = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -35,11 +34,11 @@ public class User {
         this.id = id;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getName() {
+        return name;
     }
 
-    public void setFullName(String fullName) { this.fullName = fullName; }
+    public void setName(String name) { this.name = name; }
 
     public int getCredits() {
         return credits;
@@ -49,19 +48,19 @@ public class User {
         this.credits = credits;
     }
 
-    public Set<Drink> getDrinks() {
-        return drinks;
-    }
-
-    public void setDrinks(Set<Drink> drinks) {
-        this.drinks = drinks;
-    }
+//    public Set<Drink> getDrinks() {
+//        return drinks;
+//    }
+//
+//    public void setDrinks(Set<Drink> drinks) {
+//        this.drinks = drinks;
+//    }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", fullName='" + fullName + '\'' +
+                ", name='" + name + '\'' +
                 ", credits=" + credits +
                 '}';
     }

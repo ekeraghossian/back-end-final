@@ -1,33 +1,27 @@
 package com.fontys.coffeeapp.backend.init;
 
-import com.fontys.coffeeapp.backend.dao.DrinkDAO;
+
 import com.fontys.coffeeapp.backend.dao.UserDAO;
-import com.fontys.coffeeapp.backend.entity.Drink;
+
 import com.fontys.coffeeapp.backend.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+
 import java.util.logging.Logger;
 
 @Component
 public class DataInit implements ApplicationRunner {
 
     private UserDAO userDAO;
-    private DrinkDAO drinkDAO;
 
     private Logger logger;
 
     @Autowired
-    public DataInit(UserDAO userDAO, DrinkDAO drinkDAO) {
+    public DataInit(UserDAO userDAO) {
         this.userDAO = userDAO;
-        this.drinkDAO = drinkDAO;
     }
 
     @Override
@@ -37,30 +31,29 @@ public class DataInit implements ApplicationRunner {
 
         if(count ==0) {
             User p1 = new User();
-            p1.setFullName("Jordy");
+            p1.setName("Fokke");
             p1.setCredits(10);
 
-            Drink drink = new Drink();
-            drink.setName("Koffie");
-            drink.setSugar(0);
-            drink.setStrength(0);
-            drink.setMilk(0);
-            drinkDAO.save(drink);
+            User p2 = new User();
+            p2.setName("Eskandar");
+            p2.setCredits(10);
 
-            Set<Drink> drinks = new HashSet<>();
-            drinks.add(drink);
+            User p3 = new User();
+            p3.setName("Jordy");
+            p3.setCredits(10);
 
-            p1.setDrinks(drinks);
+            User p4 = new User();
+            p4.setName("Wilrik");
+            p4.setCredits(10);
 
             userDAO.save(p1);
+            userDAO.save(p2);
+            userDAO.save(p3);
+            userDAO.save(p4);
 
             Iterable<User> allUsers = userDAO.findAll();
             allUsers.forEach(user -> System.out.println(user));
 
-            Iterable<Drink> allDrinks = drinkDAO.findAll();
-            allDrinks.forEach(obj -> System.out.println(obj));
         }
-
     }
-
 }
