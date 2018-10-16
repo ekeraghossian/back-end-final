@@ -6,7 +6,6 @@ import java.util.Set;
 import javax.persistence.*;
 
 @Entity
-@Table (name = "USER")
 public class User {
 
     @Id
@@ -21,7 +20,7 @@ public class User {
     private int credits;
 
 //    @ManyToMany
-//    @JoinTable(name = "GroupUserDrink",
+//    @JoinTable(name = "RoundLine",
 //            joinColumns = {@JoinColumn(name = "fk_user")},
 //            inverseJoinColumns = { @JoinColumn(name = "fk_drink")})
 //    private Set<Drink> drinks = new HashSet<>();

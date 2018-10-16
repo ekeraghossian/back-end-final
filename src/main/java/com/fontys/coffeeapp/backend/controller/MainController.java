@@ -48,7 +48,7 @@ public class MainController {
     @CrossOrigin
     @ResponseBody
     @GetMapping("/users")
-    public List<User> allUsers() {
+    public Iterable<User> allUsers() {
         Iterable<User> iterable = userDAO.findAll();
         List<User> userList = new ArrayList<>();
 

@@ -3,7 +3,7 @@ package com.fontys.coffeeapp.backend.entity;
 import javax.persistence.*;
 import java.util.Date;
 
-public class GroupUserDrink {
+public class RoundLine {
 
 //    @Id
 //    @GeneratedValue
