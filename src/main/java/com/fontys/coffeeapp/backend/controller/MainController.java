@@ -13,13 +13,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.lang.Iterable;
 
 @Controller
 public class MainController {
 
-    @Autowired
     private UserDAO userDAO;
     private BaseDrinkDAO baseDrinkDAO;
+
+    @Autowired
+    public MainController (UserDAO userDao, BaseDrinkDAO baseDrinkDAO){
+        this.userDAO = userDao;
+        this.baseDrinkDAO = baseDrinkDAO;
+    }
+    
 
     @ResponseBody
     @RequestMapping("/")
@@ -52,12 +59,14 @@ public class MainController {
     @CrossOrigin
     @ResponseBody
     @GetMapping("/basedrinks")
-    public List<BaseDrink> allBaseDrinks() {
-        Iterable<BaseDrink> iterable = baseDrinkDAO.findAll();
-        List<BaseDrink> drinklist = new ArrayList<>();
+    public Iterable<BaseDrink> allBaseDrinks() {
+//        Iterable<BaseDrink> iterable = baseDrinkDAO.findAll();
+//        List<BaseDrink> drinklist = new ArrayList<>();
+//
+//        iterable.forEach(baseDrink -> allBaseDrinks().add(baseDrink));
+//        return drinklist;
+            return baseDrinkDAO.findAll();
 
-        iterable.forEach(baseDrink -> allBaseDrinks().add(baseDrink));
-        return drinklist;
     }
 
 }

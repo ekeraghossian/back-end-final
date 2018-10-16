@@ -94,8 +94,8 @@ public class DataInit implements ApplicationRunner {
             baseDrinkDAO.save(b4);
 
 
-//            Iterable<BaseDrink> allDrinks = baseDrinkDAO.findAll();
-//            allDrinks.forEach(drink -> System.out.println(drink));
+            Iterable<BaseDrink> allDrinks = baseDrinkDAO.findAll();
+            allDrinks.forEach(drink -> System.out.println(drink));
 
         }
     }
