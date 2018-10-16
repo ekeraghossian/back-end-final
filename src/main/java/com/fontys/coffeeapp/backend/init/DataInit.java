@@ -23,10 +23,8 @@ public class DataInit implements ApplicationRunner {
     private Logger logger;
 
     @Autowired
-    public DataInit(UserDAO userDAO) {
+    public DataInit(UserDAO userDAO,BaseDrinkDAO baseDrinkDAO ) {
         this.userDAO = userDAO;
-    }
-    public DataInit(BaseDrinkDAO baseDrinkDAO) {
         this.baseDrinkDAO = baseDrinkDAO;
     }
 
@@ -96,8 +94,8 @@ public class DataInit implements ApplicationRunner {
             baseDrinkDAO.save(b4);
 
 
-            Iterable<BaseDrink> allDrinks = baseDrinkDAO.findAll();
-            allDrinks.forEach(drink -> System.out.println(drink));
+//            Iterable<BaseDrink> allDrinks = baseDrinkDAO.findAll();
+//            allDrinks.forEach(drink -> System.out.println(drink));
 
         }
     }

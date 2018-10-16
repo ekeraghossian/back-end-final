@@ -7,5 +7,4 @@ import java.util.List;
 
 public interface BaseDrinkDAO extends CrudRepository <BaseDrink, Long>{
 
-    public List<BaseDrink> findAll (String name);
 }

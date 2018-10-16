@@ -8,5 +8,4 @@ import java.util.List;
 
 public interface CustomDrinkDAO extends CrudRepository <CustomDrink, Long>{
 
-    public List<CustomDrink> findAll (String name);
 }
