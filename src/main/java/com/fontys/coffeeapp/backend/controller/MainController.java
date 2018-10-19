@@ -1,9 +1,13 @@
 package com.fontys.coffeeapp.backend.controller;
 
+import com.fontys.coffeeapp.backend.dao.AdminDAO;
 import com.fontys.coffeeapp.backend.dao.BaseDrinkDAO;
 import com.fontys.coffeeapp.backend.dao.UserDAO;
+
 import com.fontys.coffeeapp.backend.entity.BaseDrink;
 import com.fontys.coffeeapp.backend.entity.User;
+import com.fontys.coffeeapp.backend.entity.Admin;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,29 +24,31 @@ public class MainController {
 
     private UserDAO userDAO;
     private BaseDrinkDAO baseDrinkDAO;
+    private AdminDAO adminDAO;
 
     @Autowired
-    public MainController (UserDAO userDao, BaseDrinkDAO baseDrinkDAO){
+    public MainController (UserDAO userDao,
+                           BaseDrinkDAO baseDrinkDAO,
+                           AdminDAO adminDAO){
         this.userDAO = userDao;
         this.baseDrinkDAO = baseDrinkDAO;
+        this.adminDAO = adminDAO;
+
     }
-    
+
 
     @ResponseBody
     @RequestMapping("/")
     public String all() {
         Iterable<User> all = userDAO.findAll();
-
         StringBuilder sb = new StringBuilder();
-
         all.forEach(p -> sb.append(p.getName() + "<br>"));
-
         return sb.toString();
     }
 
     /**
      * Method that finds all users by using the DAO.
-     * @param  none
+     * @param
      * @return Return a list of User objects.
      */
     @CrossOrigin
@@ -56,16 +62,29 @@ public class MainController {
         return userList;
     }
 
+    /**
+     * Method that finds all basedrinks by using the DAO.
+     * @param
+     * @return Return a list of Basedrink objects.
+     */
     @CrossOrigin
     @ResponseBody
     @GetMapping("/basedrinks")
     public Iterable<BaseDrink> allBaseDrinks() {
-//        Iterable<BaseDrink> iterable = baseDrinkDAO.findAll();
-//        List<BaseDrink> drinklist = new ArrayList<>();
-//
-//        iterable.forEach(baseDrink -> allBaseDrinks().add(baseDrink));
-//        return drinklist;
             return baseDrinkDAO.findAll();
+
+    }
+
+    /**
+     * Method that finds all admins by using the DAO.
+     * @param
+     * @return Return a list of Admin objects.
+     */
+    @CrossOrigin
+    @ResponseBody
+    @GetMapping("/admins")
+    public Iterable<Admin> allAdmins() {
+        return adminDAO.findAll();
 
     }
 

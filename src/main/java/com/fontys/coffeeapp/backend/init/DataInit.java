@@ -3,9 +3,12 @@ package com.fontys.coffeeapp.backend.init;
 
 import com.fontys.coffeeapp.backend.dao.BaseDrinkDAO;
 import com.fontys.coffeeapp.backend.dao.UserDAO;
+import com.fontys.coffeeapp.backend.dao.AdminDAO;
 
 import com.fontys.coffeeapp.backend.entity.BaseDrink;
 import com.fontys.coffeeapp.backend.entity.User;
+import com.fontys.coffeeapp.backend.entity.Admin;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -19,20 +22,24 @@ public class DataInit implements ApplicationRunner {
 
     private UserDAO userDAO;
     private BaseDrinkDAO baseDrinkDAO;
+    private AdminDAO adminDAO;
 
     private Logger logger;
 
     @Autowired
-    public DataInit(UserDAO userDAO,BaseDrinkDAO baseDrinkDAO ) {
+    public DataInit(UserDAO userDAO,
+                    BaseDrinkDAO baseDrinkDAO,
+                    AdminDAO adminDAO) {
         this.userDAO = userDAO;
         this.baseDrinkDAO = baseDrinkDAO;
+        this.adminDAO = adminDAO;
     }
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
         addUsers();
         addBaseDrinks();
-
+        addAdmins();
     }
 
     private void addUsers() {
@@ -96,7 +103,33 @@ public class DataInit implements ApplicationRunner {
 
             Iterable<BaseDrink> allDrinks = baseDrinkDAO.findAll();
             allDrinks.forEach(drink -> System.out.println(drink));
-
         }
     }
-}
+
+    private void addAdmins(){
+
+            long count = adminDAO.count();
+            System.out.println(count);
+
+            if (count == 0) {
+                Admin a1 = new Admin();
+                a1.setName("Eskandar");
+                a1.setPassword("Esk");
+
+                Admin a2 = new Admin();
+                a2.setName("Fokke");
+                a2.setPassword("Fok");
+
+                Admin a3 = new Admin();
+                a3.setName("Jordy");
+                a3.setPassword("Jor");
+
+                adminDAO.save(a1);
+                adminDAO.save(a2);
+                adminDAO.save(a3);
+
+                Iterable<Admin> allAdmins = adminDAO.findAll();
+                allAdmins.forEach(admin -> System.out.println(admin));
+            }
+        }
+    }

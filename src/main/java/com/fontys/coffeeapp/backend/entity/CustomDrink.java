@@ -4,7 +4,6 @@ package com.fontys.coffeeapp.backend.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "CUSTOMDRINK")
 public class CustomDrink {
 
     @Id
